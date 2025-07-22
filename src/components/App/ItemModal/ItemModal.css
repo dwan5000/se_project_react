@@ -1,0 +1,38 @@
+.modal__footer {
+  /* position: relative; */
+}
+
+.modal__content_type_image {
+  height: 610px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.modal__caption {
+  font-family: CabinetGrotesk-Regular;
+  font-size: 20px;
+  margin: 498px 0 0;
+}
+
+.modal__weather {
+  font-family: CabinetGrotesk;
+  font-size: 20px;
+  margin: 12px 0 32px;
+}
+
+.modal__image {
+  height: 498px;
+  width: 496px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal__close-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 1;
+}

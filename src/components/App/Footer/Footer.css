@@ -1,0 +1,19 @@
+@font-face {
+  src: url("../../../vendor/fonts/CabinetGrotesk-Regular.otf")
+    format("opentype");
+  font-family: "CabinetGrotesk-Regular";
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 171px 0 24px;
+}
+
+.footer__name {
+  font-family: CabinetGrotesk-Medium;
+}
+
+.footer__date {
+  font-family: CabinetGrotesk-Medium;
+}
