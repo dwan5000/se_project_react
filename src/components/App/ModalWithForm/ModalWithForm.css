@@ -30,7 +30,6 @@
   cursor: pointer;
 }
 
-
 .modal__content {
   background-color: #fff;
   position: relative;
@@ -95,4 +94,3 @@
   width: 65px;
   cursor: pointer;
 }
-
