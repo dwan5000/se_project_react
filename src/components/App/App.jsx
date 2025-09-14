@@ -48,11 +48,12 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
-    setClothingItems((prevItems) => [
-      { name, link: image, weather },
-      ...prevItems,
-    ]);
-    closeActiveModal();
+    postItems({ name, imageUrl: image, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -66,14 +67,6 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((data) => {
-        setClothingItems(data);
-      })
-      .catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    postItems()
       .then((data) => {
         setClothingItems(data);
       })
