@@ -15,7 +15,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-import { getItems, postItems } from "../../utils/api";
+import { getItems, postItems, deleteItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -45,6 +45,11 @@ function App() {
 
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const deleteActiveModal = () => {
+    setActiveModal("");
+    deleteItems();
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
@@ -108,7 +113,7 @@ function App() {
         <ItemModal
           isOpen={activeModal === "preview"}
           card={selectedCard}
-          onClose={closeActiveModal}
+          onClose={(closeActiveModal, deleteActiveModal)}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

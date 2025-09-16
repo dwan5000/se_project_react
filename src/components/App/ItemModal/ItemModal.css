@@ -1,5 +1,5 @@
 .modal__footer {
-  /* position: relative; */
+  /* display: flex; */
 }
 
 .modal__content_type_image {
@@ -12,6 +12,8 @@
   font-family: CabinetGrotesk-Regular;
   font-size: 20px;
   margin: 498px 0 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal__weather {
@@ -35,4 +37,12 @@
   top: 4px;
   right: 4px;
   z-index: 1;
+}
+
+.modal__delete-button {
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  font-family: CabinetGrotesk;
+  cursor: pointer;
+  background-color: white;
 }

@@ -23,4 +23,15 @@ function postItems({ name, imageUrl, weather }) {
   ("");
 }
 
-export { getItems, postItems };
+function deleteItems(id) {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+}
+
+export { getItems, postItems, deleteItems };
