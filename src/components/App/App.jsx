@@ -47,9 +47,11 @@ function App() {
     setActiveModal("");
   };
 
-  const deleteActiveModal = () => {
-    setActiveModal("");
-    deleteItems();
+  const deleteActiveModal = ({ id }) => {
+    setSelectedCard(id).then(() => {
+      setActiveModal("");
+      setSelectedCard.remove();
+    });
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
@@ -113,7 +115,8 @@ function App() {
         <ItemModal
           isOpen={activeModal === "preview"}
           card={selectedCard}
-          onClose={(closeActiveModal, deleteActiveModal)}
+          onClose={closeActiveModal}
+          onDelete={deleteActiveModal}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
