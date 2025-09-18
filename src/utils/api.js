@@ -23,7 +23,7 @@ function postItems({ name, imageUrl, weather }) {
   ("");
 }
 
-function deleteItems(id) {
+function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -34,4 +34,4 @@ function deleteItems(id) {
   });
 }
 
-export { getItems, postItems, deleteItems };
+export { getItems, postItems, deleteItem };

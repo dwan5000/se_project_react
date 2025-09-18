@@ -2,6 +2,9 @@ import "../ItemModal/ItemModal.css";
 import close from "../../../assets/whiteModalClose.svg";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
+  const deleteItem = () => {
+    onDelete(card._id);
+  };
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -13,7 +16,7 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
           <h2 className="modal__caption">
             {card.name}
             <button
-              onClick={onDelete}
+              onClick={deleteItem}
               type="button"
               className="modal__delete-button"
             >

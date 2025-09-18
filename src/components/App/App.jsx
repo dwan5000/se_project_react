@@ -15,7 +15,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-import { getItems, postItems, deleteItems } from "../../utils/api";
+import { getItems, postItems, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -47,11 +47,13 @@ function App() {
     setActiveModal("");
   };
 
-  const deleteActiveModal = ({ id }) => {
-    setSelectedCard(id).then(() => {
-      setActiveModal("");
-      setSelectedCard.remove();
-    });
+  const handleDeleteItem = (id) => {
+    deleteItem(id)
+      .then(() => {
+        closeActiveModal();
+        setClothingItems((items) => items.filter((item) => item._id !== id));
+      })
+      .catch(console.error);
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
@@ -101,7 +103,14 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
+
+                />
+              }
             />
           </Routes>
 
@@ -116,7 +125,7 @@ function App() {
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
-          onDelete={deleteActiveModal}
+          onDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

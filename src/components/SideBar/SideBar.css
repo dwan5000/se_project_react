@@ -1,0 +1,8 @@
+.sidebar {
+  display: flex;
+}
+
+.sidebar__username {
+  margin-left: 16px;
+  font-family: CabinetGrotesk;
+}
