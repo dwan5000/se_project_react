@@ -1,4 +1,3 @@
-// import { defaultClothingItems } from "../../utils/constants";
 import "../ClothesSection/ClothesSection.css";
 import ItemCard from "../App/ItemCard/ItemCard";
 
