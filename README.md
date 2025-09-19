@@ -1,143 +1,40 @@
-# @vitejs/plugin-react [![npm](https://img.shields.io/npm/v/@vitejs/plugin-react.svg)](https://npmjs.com/package/@vitejs/plugin-react)
+# WTWR
 
-The default Vite plugin for React projects.
+What To Wear - A weather-based clothing reccommendation app
 
-- enable [Fast Refresh](https://www.npmjs.com/package/react-refresh) in development (requires react >= 16.9)
-- use the [automatic JSX runtime](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)
-- use custom Babel plugins/presets
-- small installation size
+## Description
 
-```js
-// vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+The What to Wear App is a dynamic app that reccommends pieces of clothing based on the weather in your area. The app displays the clothing items in cards throughout the app; while also displaying your location, date, and weather. Each card can be clicked on get a closer look on the card; also there is a delete button each card just in case a user wants to get rid of a piece of clothing indefinitely. There is also a unique toggle switch to switch the unit of measure from celcius to farenheit. There is also a add clothes button that allows the user to add and import their own images of clothing and name it. The app also has a /profile page by clicking on the avatar or username where the user can access all of the clothing available in its database. WTWR solves a unique problem by automatically reccommending what clothes that would make sense to wear by calculating to temperature outside and giving a selection based on the temperature. It utilizes the GET, POST, and DELETE APIs to send its request to servers so it will save whenever a action is performed.
 
-export default defineConfig({
-  plugins: [react()],
-});
-```
+## Tech Stack
 
-## Options
+- React
 
-### include/exclude
+- Javascript
 
-Includes `.js`, `.jsx`, `.ts` & `.tsx` and excludes `/node_modules/` by default. This option can be used to add fast refresh to `.mdx` files:
+- CSS
 
-```js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import mdx from "@mdx-js/rollup";
+- APIs
 
-export default defineConfig({
-  plugins: [
-    { enforce: "pre", ...mdx() },
-    react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
-  ],
-});
-```
+## Deployment
 
-### jsxImportSource
+This webpage is deployed to Github Pages.
 
-Control where the JSX factory is imported from. Default to `'react'`
+- [Deployment Link :]() Website
 
-```js
-react({ jsxImportSource: "@emotion/react" });
-```
 
-### jsxRuntime
 
-By default, the plugin uses the [automatic JSX runtime](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html). However, if you encounter any issues, you may opt out using the `jsxRuntime` option.
 
-```js
-react({ jsxRuntime: "classic" });
-```
+## Overview
 
-### babel
+- Toggle switch from Farenheit to Celcius
 
-The `babel` option lets you add plugins, presets, and [other configuration](https://babeljs.io/docs/en/options) to the Babel transformation performed on each included file.
+- Automatically Recommend clothes based off weather
 
-```js
-react({
-  babel: {
-    presets: [...],
-    // Your plugins run before any built-in transform (eg: Fast Refresh)
-    plugins: [...],
-    // Use .babelrc files
-    babelrc: true,
-    // Use babel.config.js files
-    configFile: true,
-  }
-})
-```
+- Add Clothes
 
-Note: When not using plugins, only esbuild is used for production builds, resulting in faster builds.
+- Delete Clothes
 
-#### Proposed syntax
+- Tracks location, time, and date
 
-If you are using ES syntax that are still in proposal status (e.g. class properties), you can selectively enable them with the `babel.parserOpts.plugins` option:
-
-```js
-react({
-  babel: {
-    parserOpts: {
-      plugins: ["decorators-legacy"],
-    },
-  },
-});
-```
-
-This option does not enable _code transformation_. That is handled by esbuild.
-
-**Note:** TypeScript syntax is handled automatically.
-
-Here's the [complete list of Babel parser plugins](https://babeljs.io/docs/en/babel-parser#ecmascript-proposalshttpsgithubcombabelproposals).
-
-### reactRefreshHost
-
-The `reactRefreshHost` option is only necessary in a module federation context. It enables HMR to work between a remote & host application. In your remote Vite config, you would add your host origin:
-
-```js
-react({ reactRefreshHost: "http://localhost:3000" });
-```
-
-Under the hood, this simply updates the React Fash Refresh runtime URL from `/@react-refresh` to `http://localhost:3000/@react-refresh` to ensure there is only one Refresh runtime across the whole application. Note that if you define `base` option in the host application, you need to include it in the option, like: `http://localhost:3000/{base}`.
-
-## Middleware mode
-
-In [middleware mode](https://vite.dev/config/server-options.html#server-middlewaremode), you should make sure your entry `index.html` file is transformed by Vite. Here's an example for an Express server:
-
-```js
-app.get("/", async (req, res, next) => {
-  try {
-    let html = fs.readFileSync(path.resolve(root, "index.html"), "utf-8");
-
-    // Transform HTML using Vite plugins.
-    html = await viteServer.transformIndexHtml(req.url, html);
-
-    res.send(html);
-  } catch (e) {
-    return next(e);
-  }
-});
-```
-
-Otherwise, you'll probably get this error:
-
-```
-Uncaught Error: @vitejs/plugin-react can't detect preamble. Something is wrong.
-```
-
-### disableOxcRecommendation
-
-If set, disables the recommendation to use `@vitejs/plugin-react-oxc` (which is shown when `rolldown-vite` is detected and `babel` is not configured).
-
-## Consistent components exports
-
-For React refresh to work correctly, your file should only export React components. You can find a good explanation in the [Gatsby docs](https://www.gatsbyjs.com/docs/reference/local-development/fast-refresh/#how-it-works).
-
-If an incompatible change in exports is found, the module will be invalidated and HMR will propagate. To make it easier to export simple constants alongside your component, the module is only invalidated when their value changes.
-
-You can catch mistakes and get more detailed warning with this [eslint rule](https://github.com/ArnaudBarre/eslint-plugin-react-refresh).
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Profile section for adding clothes
